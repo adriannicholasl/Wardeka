@@ -15,16 +15,14 @@
         <!-- Tombol level akan di-generate lewat JS -->
       </div>
     </div>
-
-    <script>
-      const levelGrid = document.querySelector(".level-grid");
-      for (let i = 1; i <= 10; i++) {
-        const btn = document.createElement("button");
-        btn.className = "next-button";
-        btn.textContent = `Level ${i}`;
-        btn.onclick = () => (window.location.href = `game.html?level=${i}`);
-        levelGrid.appendChild(btn);
-      }
-    </script>
+    <!-- Modal Locked Level -->
+    <div class="modal-overlay" id="modalLocked">
+      <div class="modal-box locked">
+        <h1>Level Terkunci</h1>
+        <p>Selesaikan level sebelumnya dengan 3 bintang untuk membuka level ini.</p>
+        <button class="next-button" onclick="closeLockedModal()">OKE</button>
+      </div>
+    </div>
+    <script src="js/levelMenu.js"></script>
   </body>
 </html>

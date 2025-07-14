@@ -78,7 +78,6 @@ function handleFlip(card) {
 
 function checkForMatch() {
   const isMatch = firstCard.dataset.id === secondCard.dataset.id;
-
   if (isMatch) {
     firstCard.classList.add("matched");
     secondCard.classList.add("matched");
@@ -136,6 +135,14 @@ function endGame(isTimeOut = false) {
   starImage.classList.remove("animate");
   starImage.onload = () => starImage.classList.add("animate");
 
+  // Update localStorage jika skor bintang sekarang lebih tinggi
+  const wardekaStars = JSON.parse(localStorage.getItem("wardekaStars") || "{}");
+  const prevStars = wardekaStars[currentLevel] || 0;
+    if (stars > prevStars) {
+    wardekaStars[currentLevel] = stars;
+    localStorage.setItem("wardekaStars", JSON.stringify(wardekaStars));
+  }
+
   nextButton.textContent = isLose ? "TRY AGAIN" : "NEXT LEVEL";
   nextButton.onclick = () => {
     if (isLose) {
@@ -149,7 +156,6 @@ function endGame(isTimeOut = false) {
   };
   
   launchSparkles(25); // sparkles hanya saat menang
-
   winScreen.style.display = "flex";
 }
 

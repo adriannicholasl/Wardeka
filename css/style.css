@@ -1,4 +1,4 @@
-/* ========== RESET ========== */
+/* =================== RESET =================== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,12 +6,10 @@
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
   height: 100%;
   width: 100%;
-  overflow: hidden; /* Hindari scroll */
-  touch-action: none; /* Hindari scroll accidental */
+  overflow: hidden;
+  touch-action: none;
 }
 
 body {
@@ -20,29 +18,30 @@ body {
   background-size: cover;
   color: white;
   text-align: center;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 20px;
-    overscroll-behavior: none;
-  -webkit-overflow-scrolling: auto;
-  position: relative;
-}
-
-/* ========== GAME STRUCTURE ========== */
-.game-container {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 20px;
+  position: relative;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: auto;
+  min-height: 100vh;
+}
+
+/* =================== GAME STRUCTURE =================== */
+.game-container {
+  width: 100%;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   overflow: hidden;
 }
 
 .logo {
   z-index: 999;
 }
+
 .logo img {
   width: 100%;
   margin-bottom: -10%;
@@ -54,7 +53,6 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 0;
 }
 
 .ui-row {
@@ -72,60 +70,46 @@ body {
 .ui-block {
   position: relative;
   width: 40%;
-  height: 100px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.ui-block.small {
-  width: 40%;
-  height: 100px;
-}
-
-.ui-block.large {
-  width: 40%;
-  height: 45px;
-}
-
-.ui-block.center {
-  width: 40%;
-  height: 130px;
-}
+.ui-block.small { height: 100px; }
+.ui-block.large { height: 45px; }
+.ui-block.center { height: 130px; }
 
 .ui-block span {
   font-size: 1rem;
   font-weight: bold;
+  text-align: center;
   color: white;
   text-shadow: 1px 1px 3px #000;
-  text-align: center;
-  line-height: 1;
 }
 
 .ui-block .level-number {
   font-size: 2rem;
   padding-top: 5px;
-  display: block;
-  line-height: 1;
   margin-top: 5px;
+  display: block;
   border-top: 2px solid white;
+  line-height: 1;
 }
 
-/* ========== GAME BOARD ========== */
+/* =================== GAME BOARD =================== */
 .game-board {
   display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 5px;
   justify-content: center;
   margin-top: 15%;
-  grid-template-columns: repeat(3, 1fr);
   width: 100%;
   max-width: 90%;
 }
 
-/* CARD */
 .card {
   width: 100%;
   aspect-ratio: 2 / 3;
@@ -135,9 +119,9 @@ body {
 .card-inner {
   width: 100%;
   height: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
   position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
 }
 
 .card.flipped .card-inner {
@@ -159,15 +143,13 @@ body {
   transform: rotateY(180deg);
 }
 
-/* ========== WIN SCREEN ========== */
-/* WIN MODAL */
+/* =================== WIN SCREEN =================== */
 .win-screen {
   position: fixed;
-  top: 0; left: 0;
-  height: 100vh;
+  top: 0;
+  left: 0;
   width: 100vw;
-  overflow: hidden;
-  overflow: hidden;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.85);
   display: none;
   justify-content: center;
@@ -197,7 +179,6 @@ body {
   margin-top: 0;
 }
 
-/* Star */
 .star-image {
   width: 70%;
   height: auto;
@@ -205,60 +186,48 @@ body {
   z-index: 999;
 }
 
-/* Badge Level seperti UI Atas */
+/* =================== LEVEL BADGE =================== */
 .level-frame {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 130px;
-    height: 140px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: -10%;
-}
-.level-text {
-    font-family: 'BB Strata Pro SEF', sans-serif;
-    /* font-size: 20px; */
-    color: #b99b00;
-    text-shadow: 1px 1px 4px black;
-    /* line-height: 1.1; */
-    margin-top: -20%;
-    padding-top: -20px;  
-}
-.level-text span {
-    font-size: 40px;
-    display: block;
-    color: white;
-    margin-top: 5px;
-    padding-top: 5px;
-    border-top: 2px solid white;
+  width: 130px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-top: -10%;
 }
 
-/* Timer */
+.level-text {
+  font-family: 'BB Strata Pro SEF', sans-serif;
+  color: #b99b00;
+  text-shadow: 1px 1px 4px black;
+  margin-top: -20%;
+}
+
+.level-text span {
+  font-size: 40px;
+  color: white;
+  border-top: 2px solid white;
+  margin-top: 5px;
+  padding-top: 5px;
+  display: block;
+}
+
+/* =================== WIN TIME =================== */
 .win-time {
   font-family: 'BB Strata Pro SEF', sans-serif;
   font-size: 20px;
-  /* padding: 6px 12px;
-  margin-top: 5px; */
 }
 
-/* Buttons */
+/* =================== BUTTONS =================== */
 .button-group {
   display: flex;
   justify-content: center;
   gap: 12px;
   margin-top: auto;
   padding-bottom: 1rem;
-}
-
-
-/* ========== BUTTON GROUP ========== */
-.button-group {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: auto;
 }
 
 .menu-button,
@@ -288,13 +257,14 @@ body {
   box-shadow: inset 0 1px #FF8A00, inset 0 -4px #FF8A00;
 }
 
-/* ========== MODALS (PAUSE, RESTART) ========== */
+/* =================== MODALS =================== */
 .modal-overlay {
   position: fixed;
-  top: 0; left: 0;
-  height: 100vh;
+  top: 0;
+  left: 0;
   width: 100vw;
-  background: rgba(0,0,0,0.85);
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
   display: none;
   justify-content: center;
   align-items: center;
@@ -306,10 +276,8 @@ body {
   width: 100%;
   max-width: 368px;
   aspect-ratio: 368 / 209;
-  background: url('../assets/images/modal-bg.png');
+  background: url('../assets/images/modal-bg.png') no-repeat center center;
   background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
   padding: 1.2rem;
   display: flex;
   flex-direction: column;
@@ -334,7 +302,6 @@ body {
   padding: 12px 16px;
   width: 100%;
   margin-bottom: 0.5rem;
-  border-radius: 4px;
   box-shadow: 0 2px 4px #0007;
 }
 
@@ -348,34 +315,124 @@ body {
   margin-top: 10%;
 }
 
+/* =================== LEVEL MENU =================== */
+.level-select-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2vh 4vw;
+}
 
-/* Tambahkan ini di bagian bawah file style.css */
+.level-select-screen h1 {
+  font-family: 'BB Strata Pro SEF', sans-serif;
+  font-size:vh;
+  color: #ffffff;
+  margin-bottom: 3vh;
+  margin-top: 5vh;
+}
+
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(22vw, 1fr));
+  gap: 3vh;
+  width: 100%;
+  max-width: 95vw;
+  justify-items: center;
+
+}
+
+.level-box {
+  width: 22vw;
+  height: 22vw;
+  max-width: 90px;
+  max-height: 90px;
+  margin-bottom: 1vh;
+  background: linear-gradient(180deg, #772370 0%, #8f1a6b 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'BB Strata Pro SEF', sans-serif;
+  color: #fff;
+  text-shadow: 1px 1px 2px black;
+  box-shadow: 0 4px 12px rgb(127 37 119);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  text-align: center;
+  padding: 1vh 0;
+}
+
+.level-box:hover {
+  transform: scale(1.05);
+}
+
+.level-box .level-number {
+  font-size: 5.5vh;
+  font-weight: bold;
+  line-height: 1;
+  margin-top: 4.5vh;
+}
+
+.level-box .star-status {
+  width: 12vh;
+  height: auto;
+}
+
+/* =================== LOCKED LEVEL =================== */
+.level-box.locked {
+  opacity: 0.4;
+  background: linear-gradient(180deg, #444 0%, #222 100%);
+  cursor: not-allowed;
+  pointer-events: auto;
+  position: relative;
+}
+
+.level-box.locked:hover {
+  transform: none;
+}
+
+/* =================== MODAL REUSE =================== */
+#modalLocked {
+  display: none;
+}
+
+.modal-box.locked {
+  background: url('../assets/images/modal-bg.png') no-repeat center center;
+  background-size: cover;
+  text-align: center;
+}
+
+.modal-box.locked h1 {
+  font-size: 24px;
+  color: #FFDF7F;
+  margin-bottom: 1rem;
+}
+
+.modal-box.locked button {
+  margin-top: 1rem;
+}
+
+
+/* =================== ANIMASI BINTANG =================== */
 .star-image.animate {
   animation: popScale 0.6s ease-in-out;
 }
 
 @keyframes popScale {
-  0% {
-    transform: scale(0.5);
-    opacity: 0.5;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1);
-  }
+  0% { transform: scale(0.5); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); }
 }
 
+/* =================== SPARKLES =================== */
 .sparkle-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   pointer-events: none;
+  overflow: hidden;
   z-index: 0;
 }
 
@@ -390,12 +447,6 @@ body {
 }
 
 @keyframes sparkle-fade {
-  0% {
-    transform: scale(0.5);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1.5);
-    opacity: 0;
-  }
+  0% { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
 }

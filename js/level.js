@@ -3,11 +3,11 @@ const levelSettings = {
   2: { pairs: 4, maxTime: 65, grid: [4, 2] },
   3: { pairs: 6, maxTime: 75, grid: [4, 3] },
   4: { pairs: 8, maxTime: 90, grid: [4, 4] },
-  5: { pairs: 9, maxTime: 100, grid: [6, 3] },
+  5: { pairs: 9, maxTime: 100, grid: [5, 3] },
   6: { pairs: 10, maxTime: 110, grid: [5, 4] },
-  7: { pairs: 12, maxTime: 120, grid: [6, 4] },
-  8: { pairs: 14, maxTime: 135, grid: [7, 4] },
-  9: { pairs: 16, maxTime: 150, grid: [8, 4] },
+  7: { pairs: 12, maxTime: 120, grid: [5, 4] },
+  8: { pairs: 14, maxTime: 135, grid: [6, 4] },
+  9: { pairs: 16, maxTime: 150, grid: [6, 4] },
   10: { pairs: 18, maxTime: 180, grid: [6, 6] }
 };
 
@@ -186,7 +186,16 @@ function goToMenu() {
   window.location.href = "level.html";
 }
 
+function checkLevelAccess() {
+  const starsData = JSON.parse(localStorage.getItem("wardekaStars") || "{}");
+  if (currentLevel > 1 && (starsData[currentLevel - 1] !== 3)) {
+    alert(`🔒 Level ${currentLevel} belum terbuka!\nSelesaikan level ${currentLevel - 1} dengan 3 bintang terlebih dahulu.`);
+    window.location.href = "level.html";
+  }
+}
+
 function initGame() {
+  checkLevelAccess(); // 👈 validasi sebelum mulai
   matched = 0;
   pausedTime = 0;
   winScreen.style.display = "none";

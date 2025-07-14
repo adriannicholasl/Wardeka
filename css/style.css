@@ -1,4 +1,11 @@
 /* =================== RESET =================== */
+@font-face {
+  font-family: 'BB Strata Pro SEF';
+  src: url('../assets/fonts/BBStrataProSEF-Bold.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

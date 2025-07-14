@@ -1,0 +1,31 @@
+<!-- redeem.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reward | Wardeka</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="reward-screen">
+      <img src="assets/images/wardeka-logo-pink.png" alt="Wardeka Logo" class="login-logo" />
+      <h1>Selamat!</h1>
+      <p>Kamu telah menyelesaikan semua level 🎉</p>
+      <div class="reward-box">
+        <h2>Kode Reward Kamu:</h2>
+        <div class="reward-code" id="rewardCode">Memuat...</div>
+        <button class="next-button" id="copyCodeBtn">COPY CODE</button>
+      </div>
+      <button class="menu-button" onclick="window.location.href='level.html'">Kembali ke Level</button>
+    </div>
+
+    <script>
+      const completed = localStorage.getItem("wardekaLevelComplete");
+      if (completed !== "10") {
+        window.location.href = "level.html";
+      }
+    </script>
+    <script src="js/reward.js"></script>
+  </body>
+</html>

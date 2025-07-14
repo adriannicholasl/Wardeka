@@ -1,0 +1,30 @@
+<!-- level.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pilih Level - Wardeka</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="level-select-screen">
+      <img src="assets/images/wardeka-logo-pink.png" alt="Wardeka Logo" class="login-logo" />
+      <h1>Pilih Level</h1>
+      <div class="level-grid">
+        <!-- Tombol level akan di-generate lewat JS -->
+      </div>
+    </div>
+
+    <script>
+      const levelGrid = document.querySelector(".level-grid");
+      for (let i = 1; i <= 10; i++) {
+        const btn = document.createElement("button");
+        btn.className = "next-button";
+        btn.textContent = `Level ${i}`;
+        btn.onclick = () => (window.location.href = `game.html?level=${i}`);
+        levelGrid.appendChild(btn);
+      }
+    </script>
+  </body>
+</html>

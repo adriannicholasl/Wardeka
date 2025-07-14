@@ -5,6 +5,15 @@
   padding: 0;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* Hindari scroll */
+  touch-action: none; /* Hindari scroll accidental */
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   background: url('../assets/images/body-bg.png') no-repeat center center fixed;
@@ -16,6 +25,9 @@ body {
   justify-content: center;
   align-items: flex-start;
   padding-top: 20px;
+    overscroll-behavior: none;
+  -webkit-overflow-scrolling: auto;
+  position: relative;
 }
 
 /* ========== GAME STRUCTURE ========== */
@@ -24,6 +36,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .logo {
@@ -150,8 +164,10 @@ body {
 .win-screen {
   position: fixed;
   top: 0; left: 0;
-  width: 100%;
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  overflow: hidden;
   background: rgba(0, 0, 0, 0.85);
   display: none;
   justify-content: center;
@@ -276,8 +292,8 @@ body {
 .modal-overlay {
   position: fixed;
   top: 0; left: 0;
-  width: 100%;
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
   background: rgba(0,0,0,0.85);
   display: none;
   justify-content: center;

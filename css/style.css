@@ -1,18 +1,19 @@
 /* =================== RESET =================== */
 @font-face {
-  font-family: 'BB Strata Pro SEF';
-  src: url('../assets/fonts/BBStrataProSEF-Bold.ttf') format('ttf');
+  font-family: "BB Strata Pro SEF";
+  src: url("../assets/fonts/BBStrataProSEF-Bold.woff2") format("woff2"), url("../assets/fonts/BBStrataProSEF-Bold.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -20,8 +21,8 @@ html, body {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background: url('../assets/images/body-bg.png') no-repeat center center fixed;
+  font-family: "BB Strata Pro SEF", sans-serif;
+  background: url("../assets/images/body-bg.png") no-repeat center center fixed;
   background-size: cover;
   color: white;
   text-align: center;
@@ -55,7 +56,7 @@ body {
 }
 
 .top-ui {
-  font-family: 'BB Strata Pro SEF', sans-serif;
+  font-family: "BB Strata Pro SEF", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,9 +86,15 @@ body {
   background-position: center;
 }
 
-.ui-block.small { height: 100px; }
-.ui-block.large { height: 45px; }
-.ui-block.center { height: 130px; }
+.ui-block.small {
+  height: 100px;
+}
+.ui-block.large {
+  height: 45px;
+}
+.ui-block.center {
+  height: 130px;
+}
 
 .ui-block span {
   font-size: 1rem;
@@ -165,7 +172,7 @@ body {
 }
 
 .win-box {
-  background: url('../assets/images/modal-win-bg.png') no-repeat center center;
+  background: url("../assets/images/modal-win-bg.png") no-repeat center center;
   background-size: cover;
   width: 90%;
   max-width: 355px;
@@ -179,9 +186,9 @@ body {
 }
 
 .win-title {
-  font-family: 'BB Strata Pro SEF', sans-serif;
+  font-family: "BB Strata Pro SEF", sans-serif;
   font-size: 34px;
-  color: #FFDF7F;
+  color: #ffdf7f;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
   margin-top: 0;
 }
@@ -207,7 +214,7 @@ body {
 }
 
 .level-text {
-  font-family: 'BB Strata Pro SEF', sans-serif;
+  font-family: "BB Strata Pro SEF", sans-serif;
   color: #b99b00;
   text-shadow: 1px 1px 4px black;
   margin-top: -20%;
@@ -224,7 +231,7 @@ body {
 
 /* =================== WIN TIME =================== */
 .win-time {
-  font-family: 'BB Strata Pro SEF', sans-serif;
+  font-family: "BB Strata Pro SEF", sans-serif;
   font-size: 20px;
 }
 
@@ -241,7 +248,7 @@ body {
 .next-button {
   width: 114.24px;
   height: 32px;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: "Barlow Condensed", sans-serif;
   font-size: 10px;
   font-weight: 700;
   border: none;
@@ -261,7 +268,7 @@ body {
 .next-button {
   background: linear-gradient(180deg, #fea319 0%, #ffc634 78%);
   color: black;
-  box-shadow: inset 0 1px #FF8A00, inset 0 -4px #FF8A00;
+  box-shadow: inset 0 1px #ff8a00, inset 0 -4px #ff8a00;
 }
 
 /* =================== MODALS =================== */
@@ -283,7 +290,7 @@ body {
   width: 100%;
   max-width: 368px;
   aspect-ratio: 368 / 209;
-  background: url('../assets/images/modal-bg.png') no-repeat center center;
+  background: url("../assets/images/modal-bg.png") no-repeat center center;
   background-size: cover;
   padding: 1.2rem;
   display: flex;
@@ -295,17 +302,17 @@ body {
 }
 
 .modal-box h1 {
-  font-family: 'BB Strata Pro SEF', sans-serif;
+  font-family: "BB Strata Pro SEF", sans-serif;
   font-size: 36px;
-  color: #FFDF7F;
+  color: #ffdf7f;
   text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .modal-box p {
-  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-family: "Barlow Semi Condensed", sans-serif;
   font-size: 12px;
   color: white;
-  background: #1F1F1Fcc;
+  background: #1f1f1fcc;
   padding: 12px 16px;
   width: 100%;
   margin-bottom: 0.5rem;
@@ -331,8 +338,8 @@ body {
 }
 
 .level-select-screen h1 {
-  font-family: 'BB Strata Pro SEF', sans-serif;
-  font-size:vh;
+  font-family: "BB Strata Pro SEF", sans-serif;
+  font-size: vh;
   color: #ffffff;
   margin-bottom: 3vh;
   margin-top: 5vh;
@@ -345,7 +352,6 @@ body {
   width: 100%;
   max-width: 95vw;
   justify-items: center;
-
 }
 
 .level-box {
@@ -359,7 +365,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'BB Strata Pro SEF', sans-serif;
+  font-family: "BB Strata Pro SEF", sans-serif;
   color: #fff;
   text-shadow: 1px 1px 2px black;
   box-shadow: 0 4px 12px rgb(127 37 119);
@@ -404,14 +410,14 @@ body {
 }
 
 .modal-box.locked {
-  background: url('../assets/images/modal-bg.png') no-repeat center center;
+  background: url("../assets/images/modal-bg.png") no-repeat center center;
   background-size: cover;
   text-align: center;
 }
 
 .modal-box.locked h1 {
   font-size: 24px;
-  color: #FFDF7F;
+  color: #ffdf7f;
   margin-bottom: 1rem;
 }
 
@@ -419,16 +425,23 @@ body {
   margin-top: 1rem;
 }
 
-
 /* =================== ANIMASI BINTANG =================== */
 .star-image.animate {
   animation: popScale 0.6s ease-in-out;
 }
 
 @keyframes popScale {
-  0% { transform: scale(0.5); opacity: 0.5; }
-  50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* =================== SPARKLES =================== */
@@ -454,6 +467,12 @@ body {
 }
 
 @keyframes sparkle-fade {
-  0% { transform: scale(0.5); opacity: 1; }
-  100% { transform: scale(1.5); opacity: 0; }
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
 }

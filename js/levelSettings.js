@@ -10,5 +10,5 @@ export const levelSettings = {
   7: { pairs: 12, maxTime: 120, grid: [6, 4] },
   8: { pairs: 14, maxTime: 135, grid: [7, 4] },
   9: { pairs: 16, maxTime: 150, grid: [8, 4] },
- 10: { pairs: 18, maxTime: 180, grid: [6, 6] }
+  10: { pairs: 18, maxTime: 180, grid: [6, 6] },
 };

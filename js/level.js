@@ -154,7 +154,7 @@
 //       window.location.href = "redeem.html";
 //     }
 //   };
-  
+
 //   launchSparkles(25); // sparkles hanya saat menang
 //   winScreen.style.display = "flex";
 // }
@@ -216,7 +216,7 @@ const levelSettings = {
   7: { pairs: 12, maxTime: 120, grid: [5, 4] },
   8: { pairs: 14, maxTime: 135, grid: [6, 4] },
   9: { pairs: 16, maxTime: 150, grid: [6, 4] },
-  10: { pairs: 18, maxTime: 180, grid: [6, 6] }
+  10: { pairs: 18, maxTime: 180, grid: [6, 6] },
 };
 
 const levelParam = new URLSearchParams(window.location.search).get("level");
@@ -249,7 +249,7 @@ function shuffleArray(arr) {
 }
 
 function generateCards() {
-  const uniqueCards = shuffleArray([...Array(27).keys()].map(i => i + 1)).slice(0, totalPairs);
+  const uniqueCards = shuffleArray([...Array(27).keys()].map((i) => i + 1)).slice(0, totalPairs);
   const cards = shuffleArray([...uniqueCards, ...uniqueCards]);
 
   gameBoard.innerHTML = "";
@@ -409,7 +409,7 @@ function goToMenu() {
 
 function checkLevelAccess() {
   const starsData = JSON.parse(localStorage.getItem("wardekaStars") || "{}");
-  if (currentLevel > 1 && (starsData[currentLevel - 1] !== 3)) {
+  if (currentLevel > 1 && starsData[currentLevel - 1] !== 3) {
     alert(`🔒 Level ${currentLevel} belum terbuka!\nSelesaikan level ${currentLevel - 1} dengan 3 bintang terlebih dahulu.`);
     window.location.href = "level.html";
   }

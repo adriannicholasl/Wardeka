@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+
+  <title>Wardeka - Game</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <script>
+    function setViewportHeight() {
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    }
+
+    window.addEventListener('load', setViewportHeight);
+    window.addEventListener('resize', setViewportHeight);
+  </script>
+</head>
+
+<body>
+  <div class="game-container">
+    <div class="top-ui">
+      <div class="logo">
+        <img src="assets/images/wardeka-logo-pink.png" alt="Wardeka Logo" />
+      </div>
+      <div class="ui-row">
+        <div class="ui-block small" id="pauseBtn" style="background-image: url('assets/images/header-pause-frame.png')">
+          <span>PAUSE</span>
+        </div>
+        <div class="ui-block center" style="background-image: url('assets/images/header-level-frame.png')">
+          <span style="color: #b99b00;">
+            LEVEL
+            <span class="level-number" id="levelNumber"></span>
+          </span>
+        </div>
+        <div class="ui-block small" id="restartBtn"
+          style="background-image: url('assets/images/header-restart-frame.png')">
+          <span>RESTART</span>
+        </div>
+      </div>
+      <div class="ui-row ui-row-2">
+        <div class="ui-block large" style="background-image: url('assets/images/header-time-frame.png')">
+          <span>Times : <span id="timer">00:00</span></span>
+        </div>
+        <div class="ui-block large" style="background-image: url('assets/images/header-matched-frame.png')">
+          <span>Matched : <span id="matched">0 / 3</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-board" id="gameBoard"></div>
+
+    <!-- Modal Restart -->
+    <div class="modal-overlay" id="modalRestart">
+      <div class="modal-box restart">
+        <h1>Restart</h1>
+        <p>Are you sure want to restart level?</p>
+        <div class="modal-buttons">
+          <button class="menu-button" id="btnCancelRestart">NO</button>
+          <button class="next-button" id="btnConfirmRestart">YES</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Pause -->
+    <div class="modal-overlay" id="modalPause">
+      <div class="modal-box pause">
+        <h1>Pause</h1>
+        <button class="next-button" id="btnResume">CONTINUE</button>
+      </div>
+    </div>
+
+    <!-- WIN SCREEN -->
+    <div class="win-screen" id="winScreen">
+      <div class="win-box">
+        <div class="sparkle-container" id="sparkleContainer"></div>
+        <h1 class="win-title" id="winTitle">Level Up!</h1>
+        <img id="starImage" class="star-image" src="" alt="Star Rating" />
+
+        <div class="level-frame" style="background-image: url('assets/images/header-level-frame.png')">
+          <div class="level-text">LEVEL <span id="winLevelNumber">1</span></div>
+        </div>
+
+        <div class="win-time">Time : <span id="finalTime">00:00</span></div>
+
+        <div class="button-group">
+          <button class="menu-button" onclick="goToMenu()">Menu</button>
+          <button class="next-button" id="nextLevelBtn">Next Level</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Ambil nomor level dari URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const level = parseInt(urlParams.get("level")) || 1;
+      document.getElementById("levelNumber").textContent = level;
+    </script>
+    <script src="libs/firebase.js"></script>
+    <script src="js/auth.js" defer></script>
+    <script src="js/level.js"></script>
+    <script src="js/modal.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,595 @@
+/* =================== RESET =================== */
+@font-face {
+  font-family: "BB Strata Pro SEF";
+  src: url("../assets/fonts/BBStrataProSEF-Bold.woff2") format("woff2"), url("../assets/fonts/BBStrataProSEF-Bold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: calc(var(--vh, 1vh) * 100);
+  overflow: hidden;
+  touch-action: none;
+}
+
+body {
+  font-family: "BB Strata Pro SEF", sans-serif;
+  background: url("../assets/images/body-bg.png") no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2vh;
+  position: relative;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: auto;
+}
+
+/* =================== INDEX/HOME STRUCTURE =================== */
+.home-buttons {
+  margin-top: 4vh;
+}
+.home-buttons button {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  vertical-align: middle;
+  gap: 10px;
+  margin-bottom: 1vh;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  user-select: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  /*** full width block ***/
+  width: 80%;
+  background: linear-gradient(141deg, #d58205 0%, #ffc634 78%);
+  color: #353535;
+  box-shadow: inset 0 1px #ff8a00, inset 0 -4px #ff8a00;
+}
+
+.home-buttons button svg {
+  height: 24px;
+}
+
+.home-buttons button:active {
+  margin-top: 1px;
+}
+
+/*** disabled style ***/
+.home-buttons button:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  color: #000000;
+  background: linear-gradient(141deg, #995d04 0%, #ad8623 78%);
+  box-shadow: none;
+  text-shadow: none;
+}
+
+/* =================== GAME STRUCTURE =================== */
+.game-container {
+  width: 100%;
+  height: calc(var(--vh, 1vh) * 100);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.logo {
+  z-index: 999;
+}
+
+.logo img {
+  width: 80%;
+  margin-bottom: 2vh;
+}
+
+.top-ui {
+  font-family: "BB Strata Pro SEF", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.ui-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: -8vh;
+}
+
+.ui-row.ui-row-2 {
+  margin-top: -5vh;
+}
+
+.ui-block {
+  position: relative;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.ui-block.small {
+  height: 100px;
+}
+
+.ui-block.large {
+  height: 45px;
+}
+
+.ui-block.center {
+  height: 130px;
+}
+
+.ui-block span {
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 3px #000;
+}
+
+.ui-block .level-number {
+  font-size: 2rem;
+  padding-top: 5px;
+  margin-top: 5px;
+  display: block;
+  border-top: 2px solid white;
+  line-height: 1;
+}
+
+/* =================== GAME BOARD =================== */
+.game-board {
+  display: grid;
+  max-height: 100dvh;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  justify-content: center;
+  margin-top: 2.5vh;
+  width: 100%;
+  max-width: 90%;
+}
+
+.card {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  perspective: 1000px;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-front {
+  transform: rotateY(180deg);
+}
+
+/* =================== WIN SCREEN =================== */
+.win-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.win-box {
+  background: url("../assets/images/modal-win-bg.png") no-repeat center center;
+  background-size: cover;
+  width: 90%;
+  max-width: 355px;
+  aspect-ratio: 355 / 477;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+  gap: 20px;
+}
+
+.win-title {
+  font-family: "BB Strata Pro SEF", sans-serif;
+  font-size: 34px;
+  color: #ffdf7f;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.star-image {
+  width: 70%;
+  height: auto;
+  object-fit: contain;
+  z-index: 999;
+}
+
+/* =================== LEVEL BADGE =================== */
+.level-frame {
+  width: 130px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-top: -10%;
+}
+
+.level-text {
+  font-family: "BB Strata Pro SEF", sans-serif;
+  color: #b99b00;
+  text-shadow: 1px 1px 4px black;
+  margin-top: -20%;
+}
+
+.level-text span {
+  font-size: 40px;
+  color: white;
+  border-top: 2px solid white;
+  margin-top: 5px;
+  padding-top: 5px;
+  display: block;
+}
+
+/* =================== WIN TIME =================== */
+.win-time {
+  font-family: "BB Strata Pro SEF", sans-serif;
+  font-size: 20px;
+}
+
+/* =================== BUTTONS =================== */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: auto;
+  padding-bottom: 1rem;
+}
+
+.menu-button,
+.next-button {
+  width: 114.24px;
+  height: 32px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-button {
+  background: linear-gradient(180deg, #2f2d36 0%, #22212d 100%);
+  color: white;
+  box-shadow: inset 0 1px #586776, inset 0 -4px #586776;
+}
+
+.next-button {
+  background: linear-gradient(180deg, #fea319 0%, #ffc634 78%);
+  color: black;
+  box-shadow: inset 0 1px #ff8a00, inset 0 -4px #ff8a00;
+}
+
+/* =================== MODALS =================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1.5rem;
+  z-index: 999;
+}
+
+.modal-box {
+  width: 100%;
+  max-width: 368px;
+  aspect-ratio: 368 / 209;
+  background: url("../assets/images/modal-bg.png") no-repeat center center;
+  background-size: cover;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+}
+
+.modal-box h1 {
+  font-family: "BB Strata Pro SEF", sans-serif;
+  font-size: 36px;
+  color: #ffdf7f;
+  text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-box p {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-size: 12px;
+  color: white;
+  background: #1f1f1fcc;
+  padding: 12px 16px;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 4px #0007;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+#btnResume {
+  margin-top: 10%;
+}
+
+/* =================== LEVEL MENU =================== */
+.level-select-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2vh 4vw;
+}
+
+.level-select-screen h1 {
+  font-family: "BB Strata Pro SEF", sans-serif;
+  font-size: 2.5vh;
+  color: #ffffff;
+  margin-bottom: 3vh;
+  margin-top: 5vh;
+}
+
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(22vw, 1fr));
+  gap: 3vh;
+  width: 100%;
+  max-width: 95vw;
+  justify-items: center;
+}
+
+.level-box {
+  width: 22vw;
+  height: 22vw;
+  max-width: 90px;
+  max-height: 90px;
+  margin-bottom: 1vh;
+  background: linear-gradient(180deg, #772370 0%, #8f1a6b 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "BB Strata Pro SEF", sans-serif;
+  color: #fff;
+  text-shadow: 1px 1px 2px black;
+  box-shadow: 0 4px 12px rgb(127 37 119);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  text-align: center;
+  padding: 1vh 0;
+}
+
+.level-box:hover {
+  transform: scale(1.05);
+}
+
+.level-box .level-number {
+  font-size: 5.5vh;
+  font-weight: bold;
+  line-height: 1;
+  margin-top: 4.5vh;
+}
+
+.level-box .star-status {
+  width: 12vh;
+  height: auto;
+}
+
+/* =================== LOCKED LEVEL =================== */
+.level-box.locked {
+  opacity: 0.4;
+  background: linear-gradient(180deg, #444 0%, #222 100%);
+  cursor: not-allowed;
+  pointer-events: auto;
+  position: relative;
+}
+
+.level-box.locked:hover {
+  transform: none;
+}
+
+/* =================== MODAL REUSE =================== */
+#modalLocked {
+  display: none;
+}
+
+.modal-box.locked {
+  background: url("../assets/images/modal-bg.png") no-repeat center center;
+  background-size: cover;
+  text-align: center;
+}
+
+.modal-box.locked h1 {
+  font-size: 24px;
+  color: #ffdf7f;
+  margin-bottom: 1rem;
+}
+
+.modal-box.locked button {
+  margin-top: 1rem;
+}
+
+/* =================== ANIMASI BINTANG =================== */
+.star-image.animate {
+  animation: popScale 0.6s ease-in-out;
+}
+
+@keyframes popScale {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* =================== SPARKLES =================== */
+.sparkle-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.sparkle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, white 0%, transparent 60%);
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkle-fade 0.8s ease-out forwards;
+}
+
+@keyframes sparkle-fade {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@media screen and (max-height: 739px) {
+  .logo img {
+    width: 60%;
+    margin-bottom: -5%;
+  }
+
+  .ui-row {
+    margin-top: -4vh;
+  }
+
+  .ui-block.small {
+    width: 30%;
+  }
+
+  .ui-block.large {
+    width: 20vh;
+    margin-top: 1vh;
+  }
+
+  .ui-block.center {
+    height: 90px;
+  }
+
+  .ui-block span {
+    font-size: 0.7rem;
+  }
+
+  .ui-block .level-number {
+    font-size: 1.2rem;
+  }
+
+  .level-frame {
+    width: 100px;
+    height: 110px;
+  }
+
+  .level-text span {
+    font-size: 28px;
+  }
+
+  .win-title {
+    font-size: 28px;
+  }
+
+  .star-image {
+    width: 60%;
+  }
+
+  .win-time {
+    font-size: 16px;
+  }
+
+  .menu-button,
+  .next-button {
+    width: 100px;
+    height: 28px;
+    font-size: 9px;
+  }
+}
+
+@media screen and (max-height: 739px) {
+  .game-board {
+    gap: 4px;
+    margin-top: 5%;
+  }
+
+  .card {
+    width: 95%;
+    aspect-ratio: 2 / 3;
+  }
+}

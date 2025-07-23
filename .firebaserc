@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "wardeka-memory-game"
+  },
+  "targets": {
+    "wardeka-memory-game": {
+      "hosting": {
+        "wardeka-memory-game": [
+          "default"
+        ]
+      }
+    }
+  }
+}
